@@ -2,6 +2,10 @@ import React, {useReducer, createContext, useContext, useRef} from 'react';
 
 function todoReducer(state, action) {
     switch (action.type) {
+        case 'INIT':
+            return []
+        case 'READ' :
+            return [...state, ...action.todos];
         case 'CREATE':
             return state.concat(action.todo);
         case 'TOGGLE':
@@ -21,8 +25,8 @@ const TodoNextIdContext = createContext();
 
 export function TodoProvider({children}) {
     const [state, dispatch] = useReducer(todoReducer, []);
-    //const nextId = useRef(1);
-    let nextId = 1;
+    const nextId = useRef(1);
+    // let nextId = 1;
 
     return (
         <TodoStateContext.Provider value={state}>

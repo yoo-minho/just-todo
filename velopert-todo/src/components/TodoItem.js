@@ -63,7 +63,7 @@ function TodoItem({id, done, text}) {
     const onToggle = () => dispatch({type: 'TOGGLE', id});
     const onRemove = () => dispatch({type: 'REMOVE', id});
     return (
-        <TodoItemBlock>
+        <TodoItemBlock id={id}>
             <CheckCircle onClick={onToggle} done={done}>
                 {done && <MdDone/>}
             </CheckCircle>
