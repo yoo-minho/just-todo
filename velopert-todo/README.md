@@ -2,8 +2,7 @@
 
 1. useReducer에 관하여
 
-reducer 는 현재 상태와 객체 상태를 파라미터로 받아
-새로운 상태를 반환해주는 함수이다.
+reducer 는 현재 상태와 객체 상태를 파라미터로 받아 새로운 상태를 반환해주는 함수이다.
 
 ```js
 /**
@@ -19,8 +18,32 @@ const [state, dispatch] = useReducer(function todoReducer(state, action) {
 
 ```
 
-2. TodoCreate 같은 경우는 리렌더링할 필요없으니
-상태값들을 초기화해주고,
-React.memo(TodoCreate)로 한번 렌더링하면 된다.
+2. TodoCreate 같은 경우는 리렌더링할 필요없으니 상태값들을 초기화해주고,  
+   React.memo(TodoCreate)로 한번 렌더링하면 된다.
 
-> Q. TodoProvider 꼭 useRef 를 써야 하는가? 
+> Q. TodoProvider 꼭 useRef 를 써야 하는가?
+
+3. 스프레드 문법 활용가능성
+
+```js
+function foo() {
+    return {
+        ...{a: 1}, 
+        b: 2, c: 3
+    }
+}
+
+function foo() {
+    return {
+        ...{a: 1},
+        ...{b: 2, c: 3}
+    }
+}
+
+function foo() {
+    return {
+        a: 1,
+        ...{b: 2, c: 3}
+    }
+}
+```
