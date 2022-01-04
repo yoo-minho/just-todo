@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import TodoItem from "./TodoItem";
-import {useTodoDispatch, useTodoNextId, useTodoState} from '../TodoContext';
-import axios from "axios";
+import {getTodos, useTodoDispatch, useTodoNextId, useTodoState} from '../TodoContext';
 
 const TodoListBlock = styled.div`
   flex: 1;
@@ -13,41 +12,17 @@ const TodoListBlock = styled.div`
 
 function TodoList() {
 
-    const todos = useTodoState();
+    const {loading, error, data: todos} = useTodoState();
     const dispatch = useTodoDispatch()
     const nextId = useTodoNextId();
 
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-
-    const fetchUsers = async () => {
-        try {
-            dispatch({type: 'INIT'});
-            setError(null);
-            setLoading(true);
-            const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-            dispatch({
-                type: 'READ',
-                todos: response.data.map((v, i) => ({
-                    id: i,
-                    text: v.name,
-                    done: true,
-                }))
-            });
-            nextId.current = response.data.length;
-        } catch (e) {
-            console.error(e)
-            setError(e);
-        }
-        setLoading(false);
-    };
-
     useEffect(() => {
-        fetchUsers();
-    }, []);
+        getTodos(dispatch, nextId);
+    }, [dispatch, nextId]);
 
     if (loading) return <div>로딩중..</div>;
     if (error) return <div>에러가 발생했습니다 {error}</div>;
+    if (!todos) return null;
 
     return <TodoListBlock>
         {todos.map(todo => (

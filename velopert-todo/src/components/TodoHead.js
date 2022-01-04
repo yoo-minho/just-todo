@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useTodoState } from '../TodoContext';
+import {useTodoState} from '../TodoContext';
 
 const TodoHeadBlock = styled.div`
   padding-top: 48px;
@@ -28,7 +28,7 @@ const TodoHeadBlock = styled.div`
 
 function TodoHead() {
 
-    const todos = useTodoState();
+    const {data: todos} = useTodoState();
     const undoneTasks = todos.filter(todo => !todo.done);
 
     const today = new Date();
@@ -37,7 +37,7 @@ function TodoHead() {
         month: 'long',
         day: 'numeric'
     });
-    const dayName = today.toLocaleDateString('ko-KR', { weekday: 'long' });
+    const dayName = today.toLocaleDateString('ko-KR', {weekday: 'long'});
 
     return (
         <TodoHeadBlock>
