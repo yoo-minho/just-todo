@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import {createGlobalStyle} from "styled-components";
 import TodoTemplate from "./components/TodoTemplate";
 import TodoHead from "./components/TodoHead";
@@ -14,14 +15,19 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
     return (
-        <TodoProvider>
-            <GlobalStyle/>
-            <TodoTemplate>
-                <TodoHead/>
-                <TodoList/>
-                <TodoCreate/>
-            </TodoTemplate>
-        </TodoProvider>
+        <>
+            <BrowserRouter>
+
+            </BrowserRouter>
+            <TodoProvider>
+                <GlobalStyle/>
+                <TodoTemplate>
+                    <TodoHead/>
+                    <TodoList/>
+                    <TodoCreate/>
+                </TodoTemplate>
+            </TodoProvider>
+        </>
     );
 }
 
