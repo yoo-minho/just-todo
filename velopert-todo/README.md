@@ -47,3 +47,26 @@ function foo() {
     }
 }
 ```
+
+4. 버전업이 되었다고 이렇게 어려울일?
+
+1.
+속성이 바뀌고
+안에 태그처리로 바꿔야 되는 거였음.
+```js
+<div>
+   <Route path="/" component={Home} />
+   <Route path="/about" component={About} />
+</div>
+
+<div>
+   <Routes>
+       <Route path="/" element={<Home/>}/>
+       <Route path="/about" element={<About/>}/>
+   </Routes>
+</div>
+
+```
+
+2. 서브라우트를 하려거든
+   https://reactrouter.com/docs/en/v6/getting-started/overview#descendant-routes
