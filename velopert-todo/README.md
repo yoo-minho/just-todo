@@ -71,4 +71,5 @@ function foo() {
 5. 서브라우트를 하려거든
    https://reactrouter.com/docs/en/v6/getting-started/overview#descendant-routes
 
-6. 
+6. 불필요한 리렌더링을 계속 추적해주는게 중요한데,
+크롬 개발자 도구 - components => 설정 => Highlight updates 설정을 켠다.

@@ -4,6 +4,8 @@ import {Link, Route, Routes} from 'react-router-dom';
 import About from "./About";
 import Home from "./Home";
 import Profiles from "./Profiles";
+import CounterContainer from "./containers/CounterContainer";
+import TodosContainer from "./containers/TodosContainer";
 
 function App() {
     return (
@@ -18,8 +20,14 @@ function App() {
                 <li>
                   <Link to="/todo">투두</Link>
                 </li>
-                                <li>
+                <li>
                   <Link to="/profiles">프로필목록</Link>
+                </li>
+               <li>
+                  <Link to="/counter">카운터</Link>
+                </li>
+                <li>
+                  <Link to="/todos">리덕스투두</Link>
                 </li>
               </ul>
               <hr/>
@@ -27,9 +35,17 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/about" element={<About/>}/>
                 <Route path="/todo" element={<Todo/>}/>
-                <Route path="/profiles/*" element={<Profiles/>} />
-            </Routes>
-        </div>
+                <Route path="/profiles/*" element={<Profiles/>}/>
+                <Route path="/counter" element={<CounterContainer/>}/>
+                <Route path="/todos" element={
+                    <div>
+                        <CounterContainer/>
+                        <hr/>
+                        <TodosContainer/>
+                    </div>
+                }/>
+                    </Routes>
+                    </div>
     );
 }
 
