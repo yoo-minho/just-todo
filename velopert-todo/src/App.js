@@ -1,9 +1,8 @@
 import React from 'react';
 import Todo from "./Todo";
-import {Route, Routes, Link} from 'react-router-dom';
+import {Link, Route, Routes} from 'react-router-dom';
 import About from "./About";
 import Home from "./Home";
-import Profile from "./Profile";
 import Profiles from "./Profiles";
 
 function App() {

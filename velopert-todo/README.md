@@ -68,5 +68,7 @@ function foo() {
 
 ```
 
-2. 서브라우트를 하려거든
+5. 서브라우트를 하려거든
    https://reactrouter.com/docs/en/v6/getting-started/overview#descendant-routes
+
+6. 
