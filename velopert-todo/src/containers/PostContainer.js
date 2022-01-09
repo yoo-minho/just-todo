@@ -1,15 +1,12 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getPost } from '../modules/posts';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {getPost} from '../modules/posts';
 import Post from '../components/Post';
 import {useParams} from "react-router";
 
 function PostContainer() {
 
     const {postId} = useParams();
-
-
-    console.log("PostContainer", postId)
 
     const { data, loading, error } = useSelector(state => state.posts.post);
     const dispatch = useDispatch();
