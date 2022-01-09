@@ -5,12 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom'; // * BrowserRouter 불러오기
 
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import rootReducer from "./modules";
-import {composeWithDevTools} from 'redux-devtools-extension'; // 리덕스 개발자 도구
+import {composeWithDevTools} from 'redux-devtools-extension';
+import {logger} from "redux-logger" // 리덕스 개발자 도구
+import ReduxThunk from 'redux-thunk';
 
-const store = createStore(rootReducer, composeWithDevTools());
+const store = createStore(
+    rootReducer,
+    composeWithDevTools(applyMiddleware(
+        ReduxThunk, logger
+    ))
+);
 console.log(store.getState())
 
 ReactDOM.render(

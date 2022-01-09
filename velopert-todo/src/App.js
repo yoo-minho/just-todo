@@ -6,6 +6,7 @@ import Home from "./Home";
 import Profiles from "./Profiles";
 import CounterContainer from "./containers/CounterContainer";
 import TodosContainer from "./containers/TodosContainer";
+import PostListContainer from "./containers/PostListContainer";
 
 function App() {
     return (
@@ -29,6 +30,9 @@ function App() {
                 <li>
                   <Link to="/todos">리덕스투두</Link>
                 </li>
+                <li>
+                  <Link to="/posts">리덕스포스트</Link>
+                </li>
               </ul>
               <hr/>
             <Routes>
@@ -44,8 +48,9 @@ function App() {
                         <TodosContainer/>
                     </div>
                 }/>
-                    </Routes>
-                    </div>
+                <Route path="/posts/*" element={<PostListContainer/>}/>
+            </Routes>
+            </div>
     );
 }
 
