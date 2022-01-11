@@ -53,6 +53,11 @@ Todo list 만들기는 이제 그만 [링크1]
 7. 지구 투두리스트
    > NODE.JS + MONGGO DB + EJS [링크9]  
    > Github [링크10]
+               
+<br>
+               
+8. 창회 투두리스트 
+    > Nest + TypeORM [링크11]
 
 [링크1]: https://techblog.woowahan.com/2672/
 
@@ -73,3 +78,5 @@ Todo list 만들기는 이제 그만 [링크1]
 [링크9]: https://earth-ing.tistory.com/m/33
 
 [링크10]: https://github.com/earth-space/NodeApp/tree/todo
+
+[링크11]: https://changhoi.github.io/posts/backend/nest-todo-api-demo/
