@@ -7,18 +7,22 @@ import {BrowserRouter} from 'react-router-dom'; // * BrowserRouter 불러오기
 
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import rootReducer from "./modules";
+import rootReducer, {rootSaga} from "./modules";
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {logger} from "redux-logger" // 리덕스 개발자 도구
 import ReduxThunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
+
+const sagaMiddleware = createSagaMiddleware(); // 사가 미들웨어를 만듭니다.
 
 const store = createStore(
     rootReducer,
     composeWithDevTools(applyMiddleware(
-        ReduxThunk, logger
+        ReduxThunk, sagaMiddleware, logger
     ))
 );
-console.log(store.getState())
+
+sagaMiddleware.run(rootSaga); // 루트 사가를 실행해줍니다.
 
 ReactDOM.render(
     <BrowserRouter>
