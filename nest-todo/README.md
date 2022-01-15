@@ -1,0 +1,5 @@
+- new g new ./
+- npm i -s @nestjs/typeorm typeorm pg
+- nest g res todo
+- npm install @nestjs/mapped-types --save
+- npm i -s lodash
