@@ -1,14 +1,22 @@
 import {Body, Controller, Delete, Get, Param, Patch, Post} from '@nestjs/common';
 import {TodoService} from './todo.service';
 import {ICreateTodoDto} from './interfaces/dto.interface';
+import {ApiCreatedResponse, ApiOperation, ApiResponse, ApiTags} from "@nestjs/swagger";
+import {CreateTodoDto} from "./dto/create-todo.dto";
 
 @Controller('todo')
+@ApiTags('유저 API')
 export class TodoController {
     constructor(private readonly todoService: TodoService) {
     }
 
     @Post()
-    async create(@Body() createTodoDto: ICreateTodoDto) {
+    @ApiResponse({
+        description: '회원가입 API',
+    })
+    @ApiOperation({ summary: '유저 생성 API', description: '유저를 생성한다.' })
+    @ApiCreatedResponse({ description: '유저를 생성한다.', type: ICreateTodoDto })
+    async create(@Body() createTodoDto: CreateTodoDto) {
         return await this.todoService.create(createTodoDto);
     }
 

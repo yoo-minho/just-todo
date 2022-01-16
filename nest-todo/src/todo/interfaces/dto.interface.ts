@@ -1,4 +1,4 @@
-export interface ICreateTodoDto {
+export class ICreateTodoDto {
     shortDesc: string;
     longDesc?: string;
 }

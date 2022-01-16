@@ -1,18 +1,21 @@
 import {Injectable} from '@nestjs/common';
 import Todo from "src/models/todo.entity";
-import {ICreateTodoDto} from "./interfaces/dto.interface";
 import {Repository} from "typeorm";
 import {InjectRepository} from "@nestjs/typeorm";
+import {TodoRepository} from "./todo.repository";
+import {UpdateTodoDto} from "./dto/update-todo.dto";
+import {CreateTodoDto} from "./dto/create-todo.dto";
 
 @Injectable()
 export class TodoService {
     constructor(
-        @InjectRepository(Todo) private readonly todo: Repository<Todo>
+        @InjectRepository(Todo) private readonly todo: Repository<Todo>,
+        @InjectRepository(TodoRepository) private todoRepository: TodoRepository
     ) {
     }
 
-    create(createTodoDto: ICreateTodoDto) {
-        return this.todo.create(createTodoDto).save();
+    create(createTodoDto: CreateTodoDto) {
+        return this.todoRepository.createTodo(createTodoDto);
     }
 
     findAll() {
@@ -28,6 +31,11 @@ export class TodoService {
 
     remove(id: number) {
         return this.todo.delete(id);
+    }
+
+    update(id: number, updateTodoDto: UpdateTodoDto) {
+        // const before = await this.todo.findOne(id);
+        // await this.todo.update(id, updateTodoDto)
     }
 
     async toggleStatus(id: number) {
