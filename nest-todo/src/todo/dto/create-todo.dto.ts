@@ -2,21 +2,21 @@ import {IsBoolean, IsString} from "class-validator";
 import {ApiProperty} from "@nestjs/swagger";
 
 export class CreateTodoDto {
-    @IsString()
     @ApiProperty({
-        example: "메모",
-        description: "제목",
+        example: "짧은 메모",
+        description: "짧은 메모",
         required: true,
     })
+    @IsString()
     readonly shortDesc: string;
 
-    @IsString()
     @ApiProperty({
-        example: "메모22",
-        description: "제목22",
+        example: "긴 메모",
+        description: "긴 메모",
         required: true,
     })
-    readonly longDesc: number;
+    @IsString()
+    readonly longDesc: string;
 
     @IsBoolean()
     readonly isDone: boolean;

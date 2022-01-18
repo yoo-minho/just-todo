@@ -1,4 +1,4 @@
-import {Injectable} from '@nestjs/common';
+import {Injectable, NotFoundException} from '@nestjs/common';
 import Todo from "src/models/todo.entity";
 import {Repository} from "typeorm";
 import {InjectRepository} from "@nestjs/typeorm";
@@ -20,26 +20,30 @@ export class TodoService {
 
     findAll() {
         return this.todo.find({
-            select: ["shortDesc", "isDone", "createdAt"],
+            select: ["id", "shortDesc", "isDone", "createdAt"],
             order: {createdAt: -1}
         });
     }
 
-    findOne(id: number) {
-        return this.todo.findOne(id);
+    async findOne(id: number) {
+        const oneTodo = await this.todo.findOne({where: {id}});
+        if (!oneTodo) {
+            throw new NotFoundException(`id: ${id} 에 해당하는 할일이 존재하지 않습니다`);
+        }
+        return oneTodo;
     }
 
     remove(id: number) {
         return this.todo.delete(id);
     }
 
-    update(id: number, updateTodoDto: UpdateTodoDto) {
-        // const before = await this.todo.findOne(id);
-        // await this.todo.update(id, updateTodoDto)
+    async update(id: number, updateTodoDto: UpdateTodoDto) {
+        const oneTodo = await this.findOne(id);
+        return this.todo.save({...oneTodo, ...updateTodoDto});
     }
 
     async toggleStatus(id: number) {
-        const before = await this.todo.findOne(id);
-        await this.todo.update(id, {isDone: !before.isDone})
+        const oneTodo = await this.findOne(id)
+        return await this.todo.save({...oneTodo, isDone: !oneTodo.isDone})
     }
 }
