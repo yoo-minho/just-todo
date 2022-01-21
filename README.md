@@ -19,7 +19,7 @@ Todo list 만들기는 이제 그만 [링크1]
 
 ### 투두리스트
 
-1. 벨로퍼트 투두리스트
+1. 벨로퍼트 투두리스트 [v]
    > REACT + REDUX [링크2]  
    REACT + TESTING LIBRARY [링크3]
 
@@ -56,7 +56,7 @@ Todo list 만들기는 이제 그만 [링크1]
                
 <br>
                
-8. 창회 투두리스트 
+8. 창회 투두리스트 [v]
     > Nest + TypeORM [링크11]
 
 [링크1]: https://techblog.woowahan.com/2672/
