@@ -1,10 +1,12 @@
 <script>
+    import {onMount} from "svelte";
     import {writable} from 'svelte/store';
     import Todo from './Todo.svelte'
 
     let title = '';
     let todos = writable([]);
     let id = 0;
+    let ref;
 
     function createTodo() {
         if (!title.trim()) {
@@ -18,12 +20,16 @@
         title = '';
         id += 1;
     }
+
+    onMount(() => {
+        ref.focus();
+    })
 </script>
 
 <label>
     <input type="text"
-           autofocus
            bind:value={title}
+           bind:this={ref}
            on:keydown={(e) => {e.key === 'Enter' && createTodo()}}/>
 </label>
 <button on:click={createTodo}>
