@@ -5,3 +5,5 @@
     - 변수에 $ 붙이면 안 된다.
 3. 반응성을 위해
    - todos = todos; 생소함
+   
+4. autofocus는 빠꾸먹으니, bind:this + beforeUpdate 활용하기

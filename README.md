@@ -15,6 +15,12 @@ Todo list 만들기는 이제 그만 [링크1]
 
 그래도 만들어보자?
 
+### 투두스페이스
+
+프론트 : React <=> Vue <=> Svelte <=> Vanilla
+CSS 프레임워크 : tailwind <=> Bootstrap <=> Mui
+백엔드 : Express <=> Nestjs
+
 ---
 
 ### 투두리스트
@@ -40,7 +46,7 @@ Todo list 만들기는 이제 그만 [링크1]
 
 <br>
 
-5. 히어로 투두리스트
+5. 히어로 투두리스트 [v]
    > SVELTE [링크7]
 
 <br>
