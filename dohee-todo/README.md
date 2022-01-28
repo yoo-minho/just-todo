@@ -1,0 +1,1 @@
+1. .editorconfig는 간단하게 Ctrl + Alt + L 을 먹는 것 같다.
