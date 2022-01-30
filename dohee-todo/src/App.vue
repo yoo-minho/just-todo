@@ -5,6 +5,7 @@
       <router-link to="/about">About</router-link> |
       <router-link to="/router1">Router1</router-link> |
       <router-link to="/router2">Router2</router-link> |
+      <router-link to="/mix-in">MixIn</router-link> |
     </div>
     <router-view/>
   </div>

@@ -24,6 +24,11 @@ const routes: Array<RouteConfig> = [
     path: '/router2',
     name: 'Router2',
     component: () => import(/* webpackChunkName: "router2" */ '../views/Router2.vue')
+  },
+  {
+    path: '/mix-in',
+    name: 'MixIn',
+    component: () => import(/* webpackChunkName: "MixIn" */ '../views/MixIn.vue')
   }
 ]
 
