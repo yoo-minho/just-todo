@@ -29,6 +29,16 @@ const routes: Array<RouteConfig> = [
     path: '/mix-in',
     name: 'MixIn',
     component: () => import(/* webpackChunkName: "MixIn" */ '../views/MixIn.vue')
+  },
+  {
+    path: '/counter',
+    name: 'Counter',
+    component: () => import(/* webpackChunkName: "Counter" */ '../views/Counter.vue')
+  },
+  {
+    path: '/module-store',
+    name: 'ModuleStore',
+    component: () => import(/* webpackChunkName: "ModuleStore" */ '../views/ModuleStore.vue')
   }
 ]
 

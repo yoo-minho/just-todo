@@ -1,21 +1,22 @@
 <template>
   <div class="about">
-    <toggle-btn/>
-    <dropdown/>
+    {{$store.state}}
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import toggleBtn from '@/components/accordion.vue'
-import dropdown from '@/components/dropdown.vue'
+import CounterText from '@/components/CounterText.vue'
 
 @Component({
   components: {
-    dropdown,
-    toggleBtn
+    CounterText
   }
 })
 export default class About extends Vue {
+  created ():void {
+    console.log(this.$store)
+    this.$store.dispatch('moduleA/setRootData', 'minho')
+  }
 }
 </script>

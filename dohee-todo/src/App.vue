@@ -6,6 +6,8 @@
       <router-link to="/router1">Router1</router-link> |
       <router-link to="/router2">Router2</router-link> |
       <router-link to="/mix-in">MixIn</router-link> |
+      <router-link to="/counter">Counter</router-link> |
+      <router-link to="/module-store">ModuleStore</router-link> |
     </div>
     <router-view/>
   </div>
