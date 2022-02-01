@@ -2,11 +2,12 @@ import Vue from 'vue'
 import Vuex, { StoreOptions } from 'vuex'
 import moduleA from './moduleA.store'
 import moduleB from './moduleB.store'
+import { getModule } from 'vuex-module-decorators'
 
 Vue.use(Vuex)
 
 export interface RootState {
-  data: string
+  data1: string
 }
 
 const store : StoreOptions<RootState> = {
@@ -15,11 +16,11 @@ const store : StoreOptions<RootState> = {
     moduleB
   },
   state: {
-    data: 'root'
+    data1: 'root'
   },
   mutations: {
     setData (state, data:string) {
-      state.data = data
+      state.data1 = data
     }
   },
   actions: {
@@ -28,8 +29,10 @@ const store : StoreOptions<RootState> = {
     }
   },
   getters: {
-    data: (state) => state.data
+    data22: (state) => state.data1
   }
 }
 
-export default new Vuex.Store(store)
+const vuexStore = new Vuex.Store(store)
+getModule(moduleA, vuexStore)
+export default vuexStore

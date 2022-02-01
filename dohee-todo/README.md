@@ -10,3 +10,10 @@ change (event: Event): boolean {
 }
 ```
 이렇게 해야하네!
+4. VUEX 데코레이터 버전   
+- VUE2 + VUEX3 => npm i -s vuex-module-decorators@1
+- VUE3 + VUEX4 => npm i -s vuex-module-decorators or vuex-module-decorators@2
+
+5. action dispatch 안되는 현상 => 포기? ㅋㅋ
+- https://avengersrhydon1121.tistory.com/273
+- https://github.com/championswimmer/vuex-module-decorators/issues/200

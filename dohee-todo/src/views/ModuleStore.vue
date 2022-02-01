@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import CounterText from '@/components/CounterText.vue'
 
 @Component({
@@ -15,8 +15,9 @@ import CounterText from '@/components/CounterText.vue'
 })
 export default class About extends Vue {
   created ():void {
-    console.log(this.$store)
-    this.$store.dispatch('moduleA/setRootData', 'minho')
+    // const moduleA = getModule(ModuleA, this.$store)
+    // moduleA.setRootData2('minho')
+    this.$store.dispatch('moduleA/setRootData2', 'minho')
   }
 }
 </script>
