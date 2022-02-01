@@ -1,28 +1,39 @@
-import { Module } from 'vuex'
-import { RootState } from '@/store/store'
+import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
 
-interface moduleA {
-  data: string
-}
+@Module({ namespaced: true, name: 'moduleA' })
+export default class ModuleA extends VuexModule {
+  data ='moduleA'
 
-const module : Module<moduleA, RootState> = {
-  namespaced: true,
-  state: {
-    data: 'moduleA'
-  },
-  mutations: {
-    setData (state, data:string) {
-      state.data = data
-    }
-  },
-  actions: {
-    setRootData ({ commit }, data:string) {
-      commit('setData', data)
-    }
-  },
-  getters: {
-    data: (state) => state.data
+  setData (data:string):void {
+    this.data = data
   }
 }
 
-export default module
+// import { Module } from 'vuex'
+// import { RootState } from '@/store/store'
+//
+// interface moduleA {
+//   data: string
+// }
+//
+// const module : Module<moduleA, RootState> = {
+//   namespaced: true,
+//   state: {
+//     data: 'moduleA'
+//   },
+//   mutations: {
+//     setData (state, data:string) {
+//       state.data = data
+//     }
+//   },
+//   actions: {
+//     setRootData ({ commit }, data:string) {
+//       commit('setData', data)
+//     }
+//   },
+//   getters: {
+//     data: (state) => state.data
+//   }
+// }
+//
+// export default module
