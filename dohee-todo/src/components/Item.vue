@@ -30,12 +30,15 @@ export default class Item extends Vue {
   @Prop() readonly title!: string;
   @Prop() readonly status!: 'active' | 'clear';
 
-  changeStatus (): void {
+  changeStatus ({ target }: { target: HTMLInputElement }): void {
     console.log('changeStatus')
+    const checked: boolean = target.checked
+    this.$store.commit('changeStatus', { id: this.id, status: checked ? 'active' : 'clear' })
   }
 
   removeItem (): void {
     console.log('removeItem')
+    this.$store.commit('removeItem', this.id)
   }
 }
 </script>

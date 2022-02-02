@@ -35,19 +35,31 @@ export default class ItemList extends Vue {
   clearTodoList!: Item[];
 
   created (): void {
-    this.renderList = this.allTodoList
+    const status = this.$route.params.status as 'active' | 'clear'
+    this.initRenderList(status)
+  }
+
+  initRenderList (status?: 'active' | 'clear'): void {
+    if (!status) {
+      this.renderList = this.allTodoList
+    } else if (status === 'active') {
+      this.renderList = this.activeTodoList
+    } else if (status === 'clear') {
+      this.renderList = this.clearTodoList
+    }
   }
 
   @Watch('$route.params.status')
-  routeUpdate (newValue: string): void {
+  routeUpdate (newValue?: 'active' | 'clear'): void {
     console.log('newValue', newValue)
-    if (!newValue) {
-      this.renderList = this.allTodoList
-    } else if (newValue === 'active') {
-      this.renderList = this.activeTodoList
-    } else if (newValue === 'clear') {
-      this.renderList = this.clearTodoList
-    }
+    this.initRenderList(newValue)
+  }
+
+  @Watch('$store.state.todoList', { deep: true })
+  routeUpdateByStateChange (): void {
+    console.log('routeUpdateByStateChange', this.$store.state.todoList)
+    const status = this.$route.params.status as 'active' | 'clear'
+    this.initRenderList(status)
   }
 }
 </script>
