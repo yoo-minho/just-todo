@@ -1,18 +1,15 @@
 <template>
-  <div>메롱
+  <div>
+    {{count}}
   </div>
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { Getter } from 'vuex-class'
 
+@Component
 export default class CounterText extends Vue {
-  // count = 0
-   @Getter('foo') readonly count!:number;
-
-   mounted () {
-     console.log('aaaaaa', this.count)
-   }
+   @Getter readonly count!:number;
 }
 </script>

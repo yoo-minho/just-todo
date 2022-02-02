@@ -9,6 +9,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import CounterText from '@/components/CounterText.vue'
+import { Action } from 'vuex-class'
 
 @Component({
   components: {
@@ -16,12 +17,7 @@ import CounterText from '@/components/CounterText.vue'
   }
 })
 export default class About extends Vue {
-  increase () :void{
-    this.$store.dispatch('increase')
-  }
-
-  decrease () : void {
-    this.$store.dispatch('decrease')
-  }
+  @Action readonly increase!: void;
+  @Action readonly decrease!: void;
 }
 </script>
