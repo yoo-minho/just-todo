@@ -17,3 +17,42 @@ change (event: Event): boolean {
 5. action dispatch 안되는 현상 => 포기? ㅋㅋ
 - https://avengersrhydon1121.tistory.com/273
 - https://github.com/championswimmer/vuex-module-decorators/issues/200
+
+6. mapGetters Property does not exist on type 이슈
+- 찾을수가 없음
+```typescript
+@Component({
+  components: {
+    item
+  },
+  computed: {
+    ...mapGetters([
+      'allTodoList',
+      'activeTodoList',
+      'clearTodoList'
+    ])
+  }
+})
+export default class ItemList extends Vue {
+  renderList: Item[] = [];
+  allTodoList!: Item[]; //이렇게
+  activeTodoList!: Item[]; //이렇게
+  clearTodoList!: Item[]; //이렇게
+
+  created (): void {
+    this.renderList = this.allTodoList
+  }
+
+  @Watch('$route.params.status')
+  routeUpdate (newValue: string): void {
+    console.log('newValue', newValue)
+    if (!newValue) {
+      this.renderList = this.allTodoList
+    } else if (newValue === 'active') {
+      this.renderList = this.activeTodoList
+    } else if (newValue === 'clear') {
+      this.renderList = this.clearTodoList
+    }
+  }
+}
+```
