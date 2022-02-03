@@ -35,8 +35,7 @@ export default class ItemList extends Vue {
   clearTodoList!: Item[];
 
   created (): void {
-    const status = this.$route.params.status as 'active' | 'clear'
-    this.initRenderList(status)
+    this.$store.dispatch('initData')
   }
 
   initRenderList (status?: 'active' | 'clear'): void {
@@ -56,8 +55,7 @@ export default class ItemList extends Vue {
   }
 
   @Watch('$store.state.todoList', { deep: true })
-  routeUpdateByStateChange (): void {
-    console.log('routeUpdateByStateChange', this.$store.state.todoList)
+  stateUpdate (): void {
     const status = this.$route.params.status as 'active' | 'clear'
     this.initRenderList(status)
   }
