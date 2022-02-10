@@ -1,5 +1,5 @@
 import {Injectable, NotFoundException} from '@nestjs/common';
-import Todo from "src/models/todo.entity";
+import Todo from "src/todo/entities/todo.entity";
 import {Repository} from "typeorm";
 import {InjectRepository} from "@nestjs/typeorm";
 import {TodoRepository} from "./todo.repository";

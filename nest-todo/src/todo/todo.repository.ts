@@ -1,5 +1,5 @@
 import {EntityRepository, Repository} from 'typeorm';
-import Todo from '../models/todo.entity';
+import Todo from './entities/todo.entity';
 import {CreateTodoDto} from "./dto/create-todo.dto";
 
 @EntityRepository(Todo)

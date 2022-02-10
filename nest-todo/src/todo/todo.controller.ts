@@ -1,7 +1,6 @@
 import {Body, Controller, Delete, Get, Param, Patch, Post} from '@nestjs/common';
 import {TodoService} from './todo.service';
-import {ICreateTodoDto} from './interfaces/dto.interface';
-import {ApiCreatedResponse, ApiOperation, ApiResponse, ApiTags} from "@nestjs/swagger";
+import {ApiCreatedResponse, ApiOperation, ApiTags} from "@nestjs/swagger";
 import {CreateTodoDto} from "./dto/create-todo.dto";
 import {UpdateTodoDto} from "./dto/update-todo.dto";
 
@@ -26,25 +25,25 @@ export class TodoController {
 
     @ApiOperation({summary: '할일 1개 조회'})
     @Get(':id')
-    getOne(@Param('id') id: string) {
-        return this.todoService.findOne(+id);
+    getOne(@Param('id') id: number) {
+        return this.todoService.findOne(id);
     }
 
     @ApiOperation({summary: '할일 1개 수정'})
     @Patch(':id')
-    update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
-        return this.todoService.update(+id, updateTodoDto);
+    update(@Param('id') id: number, @Body() updateTodoDto: UpdateTodoDto) {
+        return this.todoService.update(id, updateTodoDto);
     }
 
     @ApiOperation({summary: '할일 완료상태 토글'})
     @Patch(':id/status')
-    toggle(@Param('id') id: string) {
-        return this.todoService.toggleStatus(+id);
+    toggle(@Param('id') id: number) {
+        return this.todoService.toggleStatus(id);
     }
 
     @ApiOperation({summary: '할일 삭제'})
     @Delete(':id')
-    remove(@Param('id') id: string) {
-        return this.todoService.remove(+id);
+    remove(@Param('id') id: number) {
+        return this.todoService.remove(id);
     }
 }
